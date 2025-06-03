@@ -16,7 +16,7 @@ def webhook():
     side = data["side"].lower()
     symbol = data["symbol"].upper()
 
-    allowed_symbols = {"BONK_USDT", "PENGU_USDT"}
+    allowed_symbols = {"BONK_USDT", "PENGU_USDT", "GROK_USDT"}
     if symbol not in allowed_symbols:
         print(f"[ERROR] Invalid symbol: {symbol}")
         return jsonify({"error": f"Invalid symbol: must be one of {allowed_symbols}"}), 400
