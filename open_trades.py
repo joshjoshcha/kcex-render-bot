@@ -8,18 +8,11 @@ from datetime import datetime
 # === CONFIG ===
 token = "WEBeb44bcf35c5d87703043fa532dbe31f32acee8758dc0064976bb22aae4ba3438"
 
-# Symbol-specific volume multipliers (used to convert USDT to position size)
 volume_multipliers = {
-    "BONK_USDT": 100000,
-    "GROK_USDT": 1,
-    "PENGU_USDT": 1000,
+    "BONK_USDT": 100000
 }
-
-# Symbol-specific base target USDT (assumes this is correct for 50 USDT balance)
 base_targets = {
-    "BONK_USDT": 100,
-    "GROK_USDT": 25,
-    "PENGU_USDT": 50,
+    "BONK_USDT": 100
 }
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
