@@ -28,15 +28,8 @@ def webhook():
         return jsonify({"error": "Invalid side: must be 'long' or 'short'"}), 400
 
     if action == "open":
-        if "vol" not in data or "leverage" not in data:
-            print("[ERROR] Missing 'vol' or 'leverage' for open action")
-            return jsonify({"error": "Missing 'vol' or 'leverage' for open action"}), 400
-
-        vol = str(data["vol"])
-        leverage = str(data["leverage"])
-
-        print(f"[ACTION] Opening {side} position on {symbol} with vol={vol}, lev={leverage}")
-        subprocess.Popen(["python3", "open_trades.py", side_map[side], vol, leverage, symbol])
+        print(f"[ACTION] Opening {side} position on {symbol}")
+        subprocess.Popen(["python3", "open_trades.py", side_map[side], symbol])
 
     elif action == "close":
         print(f"[ACTION] Closing {side} position on {symbol}...")
@@ -51,6 +44,5 @@ def webhook():
 if __name__ == "__main__":
     print("[TRADINGVIEW WEBHOOK] Server starting...")
     import os
-
     port = int(os.environ.get("PORT", 5050))
     app.run(host="0.0.0.0", port=port)
