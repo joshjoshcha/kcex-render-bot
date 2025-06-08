@@ -16,7 +16,7 @@ def webhook():
     side = data["side"].lower()
     symbol = data["symbol"].upper()
 
-    allowed_symbols = {"BONK_USDT", "PENGU_USDT", "GROK_USDT"}
+    allowed_symbols = {"BONK_USDT", "SHIB_USDT", "DOGE_USDT"}
     if symbol not in allowed_symbols:
         print(f"[ERROR] Invalid symbol: {symbol}")
         return jsonify({"error": f"Invalid symbol: must be one of {allowed_symbols}"}), 400
@@ -46,3 +46,4 @@ if __name__ == "__main__":
     import os
     port = int(os.environ.get("PORT", 5050))
     app.run(host="0.0.0.0", port=port)
+
