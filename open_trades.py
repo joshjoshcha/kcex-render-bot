@@ -9,10 +9,9 @@ from datetime import datetime
 token = "WEBeb44bcf35c5d87703043fa532dbe31f32acee8758dc0064976bb22aae4ba3438"
 
 volume_multipliers = {
-    "BONK_USDT": 100000
-}
-base_targets = {
-    "BONK_USDT": 100
+    "BONK_USDT": 100000,
+    "SHIB_USDT": 100000,
+    "DOGE_USDT": 10
 }
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
@@ -96,13 +95,18 @@ def open_trade(side, symbol):
         return
 
     volume_multiplier = volume_multipliers.get(symbol)
-    base_target_usdt = base_targets.get(symbol)
 
-    if volume_multiplier is None or base_target_usdt is None:
-        print(f"[ERROR] Missing volume multiplier or base target for {symbol}.")
+    if volume_multiplier is None:
+        print(f"[ERROR] Missing volume multiplier for {symbol}.")
         return
 
-    scaled_target_usdt = base_target_usdt * (contract_balance / 50)
+    risk_multiplier = {
+        "BONK_USDT": 2,
+        "SHIB_USDT": 0.25,
+        "DOGE_USDT": 0.25
+    }.get(symbol, 1)
+
+    scaled_target_usdt = contract_balance * risk_multiplier
 
     price, price_time = get_recent_trade_price(symbol)
     vol = int(scaled_target_usdt / (price * volume_multiplier))
