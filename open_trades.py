@@ -11,7 +11,9 @@ token = "WEBeb44bcf35c5d87703043fa532dbe31f32acee8758dc0064976bb22aae4ba3438"
 volume_multipliers = {
     "BONK_USDT": 100000,
     "SHIB_USDT": 100000,
-    "DOGE_USDT": 10
+    "DOGE_USDT": 10,
+    "TON_USDT": 1,
+    "POPCAT_USDT": 10
 }
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
@@ -23,7 +25,7 @@ def generate_content_sign(payload: dict, token: str, timestamp: str):
 
 def get_recent_trade_price(symbol):
     now = int(time.time() * 1000)
-    start = now - 3 * 24 * 60 * 60 * 1000  # last 3 days
+    start = now - 5 * 24 * 60 * 60 * 1000  # last 5 days
 
     params = {
         "category": 1,
@@ -103,14 +105,17 @@ def open_trade(side, symbol):
     risk_multiplier = {
         "BONK_USDT": 2,
         "SHIB_USDT": 0.25,
-        "DOGE_USDT": 0.25
+        "DOGE_USDT": 0.25,
+        "TON_USDT": 0.25,
+        "POPCAT_USDT": 0.25
     }.get(symbol, 1)
+
 
     scaled_target_usdt = contract_balance * risk_multiplier
 
     price, price_time = get_recent_trade_price(symbol)
     vol = int(scaled_target_usdt / (price * volume_multiplier))
-    leverage = 4  # ← Random value; adjust per symbol later if needed
+    leverage = 5  # ← Random value; adjust per symbol later if needed
 
     print(f"[INFO] Using recent deal price {price} from {price_time}")
     print(f"[INFO] Adjusted target USDT: {scaled_target_usdt:.2f}, computed volume = {vol}")
