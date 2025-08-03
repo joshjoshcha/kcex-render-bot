@@ -6,7 +6,7 @@ import sys
 from datetime import datetime
 
 # === CONFIG ===
-token = "WEB8c289cc350d60476833ab2d653c0bbc6ae6275ce2b9b33c058956fb6165e6117"
+token = "WEB5b40606ea786ede5fa3a355ba287e7b546115feacc24b34dcf7205d00783cb63"
 
 volume_multipliers = {
     "BONK_USDT": 100000,
