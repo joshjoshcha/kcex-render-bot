@@ -5,7 +5,7 @@ import json
 import sys
 
 # === CONFIG ===
-token = "WEB1bb9ed9660886642d82218e3c2c813b5e483329ea13df272eb42543365ea61a0"
+token = "WEB1a63ff10f24e600d53146cc7ef892bbac3a4441c68c4ab9b5c65e53c0858e94c"
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
     payload_str = json.dumps(payload, separators=(',', ':'))
