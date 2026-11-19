@@ -1,3 +1,4 @@
+import os
 import hashlib
 import time
 import requests
@@ -5,7 +6,7 @@ import json
 import sys
 
 # === CONFIG ===
-token = "WEB1a63ff10f24e600d53146cc7ef892bbac3a4441c68c4ab9b5c65e53c0858e94c"
+token = os.environ["KCEX_WEB_TOKEN"]
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
     payload_str = json.dumps(payload, separators=(',', ':'))

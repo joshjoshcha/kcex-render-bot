@@ -1,3 +1,4 @@
+import os
 import hashlib
 import time
 import requests
@@ -6,7 +7,7 @@ import sys
 from datetime import datetime
 
 # === CONFIG ===
-token = "WEB1a63ff10f24e600d53146cc7ef892bbac3a4441c68c4ab9b5c65e53c0858e94c"
+token = os.environ["KCEX_WEB_TOKEN"]
 
 volume_multipliers = {
     "BONK_USDT": 100000,
