@@ -6,7 +6,7 @@ import json
 import sys
 
 # === CONFIG ===
-token = os.environ["KCEX_WEB_TOKEN"]
+token = "WEB663befad1836c776248784de5fcfa5ff76c2869004531a0f74370f6066e54b5d"
 
 def generate_content_sign(payload: dict, token: str, timestamp: str):
     payload_str = json.dumps(payload, separators=(',', ':'))
