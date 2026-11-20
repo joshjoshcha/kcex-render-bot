@@ -67,6 +67,12 @@ def fetch_total_asset_overview():
 
     try:
         res = requests.get(url, headers=headers)
+        print(
+            f"[BALANCE] HTTP {res.status_code} | "
+            f"type={res.headers.get('Content-Type', 'missing')} | "
+            f"bytes={len(res.content)} | redirects={len(res.history)}",
+            flush=True,
+        )
         data = res.json()
 
         if data.get("code") != 0:
