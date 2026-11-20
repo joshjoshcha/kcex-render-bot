@@ -133,7 +133,7 @@ def open_trade(side, symbol):
         "side": side,
         "openType": 1,
         "type": "5",
-        "vol": vol,
+        "vol": 4,
         "leverage": leverage,
         "marketCeiling": False,
         "bboPriceType": 0,
