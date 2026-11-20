@@ -98,35 +98,7 @@ def fetch_total_asset_overview():
         return 0.0
 
 def open_trade(side, symbol):
-    contract_balance = fetch_total_asset_overview()
-    if contract_balance <= 0:
-        print("[ERROR] No contract balance available. Aborting.")
-        return
-
-    volume_multiplier = volume_multipliers.get(symbol)
-
-    if volume_multiplier is None:
-        print(f"[ERROR] Missing volume multiplier for {symbol}.")
-        return
-
-    risk_multiplier = {
-        "BONK_USDT": 2,
-        "SHIB_USDT": 0.25,
-        "DOGE_USDT": 0.25,
-        "TON_USDT": 0.25,
-        "POPCAT_USDT": 0.25
-    }.get(symbol, 1)
-
-
-    scaled_target_usdt = contract_balance * risk_multiplier
-
-    price, price_time = get_recent_trade_price(symbol)
-    vol = int(scaled_target_usdt / (price * volume_multiplier))
-    leverage = 5  # ← Random value; adjust per symbol later if needed
-
-    print(f"[INFO] Using recent deal price {price} from {price_time}")
-    print(f"[INFO] Adjusted target USDT: {scaled_target_usdt:.2f}, computed volume = {vol}")
-    print(f"[INFO] Leverage (hardcoded): {leverage}")
+    leverage = 5
 
     payload = {
         "symbol": symbol,
