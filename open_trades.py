@@ -7,7 +7,7 @@ import sys
 from datetime import datetime
 
 # === CONFIG ===
-token = os.environ["KCEX_WEB_TOKEN"]
+token = "WEB663befad1836c776248784de5fcfa5ff76c2869004531a0f74370f6066e54b5d"
 
 volume_multipliers = {
     "BONK_USDT": 100000,
